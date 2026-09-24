@@ -10,8 +10,25 @@ body {
 
 /* Portada */
 .portada {
+    position: relative;
     background: url('../img/portada.jpg') center center / cover no-repeat;
     min-height: 70vh;
+    overflow: hidden;
+}
+
+.portada::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.portada .container {
+    position: relative;
+    z-index: 1;
 }
 
 .portada h1 {
@@ -21,12 +38,17 @@ body {
 }
 
 .portada p {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Tarjetas del menú */
 .card {
     border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease;
 }
@@ -36,12 +58,25 @@ body {
 }
 
 .card-img-top {
+    width: 100%;
     height: 220px;
     object-fit: cover;
+    display: block;
+}
+
+.card-title {
+    font-weight: 600;
 }
 
 .precio {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+}
+
+/* Promociones */
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+    min-height: 100%;
 }
