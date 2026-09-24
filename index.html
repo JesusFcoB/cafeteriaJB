@@ -6,16 +6,29 @@
     <title>Café Aroma</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
+    <script>
+        (function () {
+            var tema = localStorage.getItem('tema');
+            if (tema === 'oscuro' || (!tema && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-tema', 'oscuro');
+            } else {
+                document.documentElement.setAttribute('data-tema', 'claro');
+            }
+        })();
+    </script>
 </head>
 <body>
 
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#inicio">☕ Café Aroma</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavegacion"
-            aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="d-flex align-items-center ml-auto">
+            <button class="btn btn-sm btn-outline-light mr-2" id="btnTema" type="button">Modo oscuro</button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavegacion"
+                aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
         <div class="collapse navbar-collapse" id="menuNavegacion">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
@@ -224,5 +237,20 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        (function () {
+            var btn = document.getElementById('btnTema');
+            function aplicar(tema) {
+                document.documentElement.setAttribute('data-tema', tema);
+                localStorage.setItem('tema', tema);
+                btn.textContent = tema === 'oscuro' ? 'Modo claro' : 'Modo oscuro';
+            }
+            aplicar(document.documentElement.getAttribute('data-tema') || 'claro');
+            btn.addEventListener('click', function () {
+                var actual = document.documentElement.getAttribute('data-tema');
+                aplicar(actual === 'oscuro' ? 'claro' : 'oscuro');
+            });
+        })();
+    </script>
 </body>
 </html>

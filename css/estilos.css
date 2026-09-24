@@ -80,3 +80,61 @@ body {
     border-radius: 0.5rem;
     min-height: 100%;
 }
+
+/* Modo oscuro */
+body,
+.card,
+.card-body,
+.form-control {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+html[data-tema="oscuro"] body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+html[data-tema="oscuro"] .card,
+html[data-tema="oscuro"] .card-body {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+html[data-tema="oscuro"] .card-text {
+    color: #cfcfcf;
+}
+
+html[data-tema="oscuro"] .form-control {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #3a3a3a;
+}
+
+html[data-tema="oscuro"] .form-control::placeholder {
+    color: #8a8a8a;
+}
+
+html[data-tema="oscuro"] .form-control:focus {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+html[data-tema="oscuro"] select.form-control option {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+html[data-tema="oscuro"] .badge-light {
+    background-color: #444;
+    color: #fff;
+}
+
+html[data-tema="oscuro"] h2,
+html[data-tema="oscuro"] h4,
+html[data-tema="oscuro"] h5,
+html[data-tema="oscuro"] label,
+html[data-tema="oscuro"] .precio {
+    color: inherit;
+}
